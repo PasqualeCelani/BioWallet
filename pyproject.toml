@@ -1,0 +1,18 @@
+[project]
+name = "BioWallet"
+authors = [
+    {name = "Pasquale Celani",email = "pasqualecelani01@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "poetry_demo", from = "src"}]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
