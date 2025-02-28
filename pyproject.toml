@@ -7,7 +7,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "deepface (==0.0.93)",
-    "tensorflow (==2.16.1)"
+    "tensorflow (==2.16.1)",
+    "tf-keras (==2.16)",
+    "dlib (==19.24.6)"
 ]
 
 [tool.poetry]

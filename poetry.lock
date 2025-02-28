@@ -235,6 +235,17 @@ tensorflow = ">=1.9.0"
 tqdm = ">=4.30.0"
 
 [[package]]
+name = "dlib"
+version = "19.24.6"
+description = "A toolkit for making real world machine learning and data analysis applications"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "dlib-19.24.6.tar.gz", hash = "sha256:77e3c28ac2c66141514b07cbb74b7c7f80381c019ce5fec99007980bc6490d7d"},
+]
+
+[[package]]
 name = "filelock"
 version = "3.17.0"
 description = "A platform independent file lock."
@@ -1480,6 +1491,21 @@ files = [
 tests = ["pytest", "pytest-cov"]
 
 [[package]]
+name = "tf-keras"
+version = "2.16.0"
+description = "Deep learning for humans."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "tf_keras-2.16.0-py3-none-any.whl", hash = "sha256:b2ad0541fa7d9e92c4b7a1b96593377afb58aaff374299a6ca6be1a42f51d899"},
+    {file = "tf_keras-2.16.0.tar.gz", hash = "sha256:db53891f1ac98197c2acced98cdca8c06ba8255655a6cb7eb95ed49676118280"},
+]
+
+[package.dependencies]
+tensorflow = ">=2.16,<2.17"
+
+[[package]]
 name = "tqdm"
 version = "4.67.1"
 description = "Fast, Extensible Progress Meter"
@@ -1668,4 +1694,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "508886dbd537ca9c6b4349fc46820762bca089099d99ce0782ef4ab91859817a"
+content-hash = "8def8ac90a5a28f49940cc4d5478c18d31b5480ab167623bebfc101001c4a866"
