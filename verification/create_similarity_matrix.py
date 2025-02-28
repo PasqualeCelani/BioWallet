@@ -52,7 +52,7 @@ def main():
         raise Exception(f"the face detector argoument must be one of the following: {', '.join(map(str, valid_detectors))}")
     
     output_file_name = args.output_file_name
-
+    similarity = get_embeddings_similarity("", "", "Facenet512", "retinaface")
 
 
 
