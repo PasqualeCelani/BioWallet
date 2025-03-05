@@ -7,11 +7,13 @@ def plot_FRR_FAR(name):
     x = data["Threshold"]
     y1 = data["FAR"]
     y2 = data["FRR"]
-    plt.plot(x,y1)
-    plt.plot(x,y2)
+    plt.grid(True)
+    plt.plot(x,y1,label="FAR")
+    plt.plot(x,y2,label="FRR")
     plt.title("Plot of FAR and FRR")
     plt.xlabel("Threshold")
     plt.ylabel("values")
+    plt.legend()
     plt.show()
 
 def plot_ROC(name):
@@ -19,6 +21,7 @@ def plot_ROC(name):
     x = data["FAR"].values
     print(x)
     y = [1-f for f in data["FRR"].values]
+    plt.grid(True)
     plt.plot(x, y)
     plt.title("ROC curve")
     plt.xlabel("FAR")
