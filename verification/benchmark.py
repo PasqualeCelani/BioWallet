@@ -1,15 +1,25 @@
 import argparse
+from random import choices
 from random import choice
 import utils
 
 
-def ImpostorGenuineSetup(matrix):
+def ImpostorGenuineSetup(matrix, impostor_genuine_probability):
     number_impostors = 0
     number_genuine = 0
     claims = []
+
+    propability = None
+    if impostor_genuine_probability == "50-50":
+        propability = [0.5, 0.5]
+    elif impostor_genuine_probability == "70-30":
+        propability = [0.7, 0.3]
+    else:
+        propability = [0.3, 0.7]
+
     for i in range(1, len(matrix)):
         identity = matrix[i][0].split("_")[0]
-        impostor = choice([True, False])
+        impostor = choices([True, False], propability)[0]
         claim = identity
         if impostor:
             identities = {matrix[0][i].split("_")[0] for i in range(1, len(matrix[0])) if matrix[0][i].split("_")[0] != identity}
@@ -26,9 +36,9 @@ def ImpostorGenuineSetup(matrix):
         claims.append([impostor, max_similarity])
     return {'impostors':number_impostors, 'genuine':number_genuine, 'claims':claims}
 
-def benchmark(similarity_matrix_name, result_name):
+def benchmark(similarity_matrix_name, result_name, impostor_genuine_probability):
     matrix = utils.read_from_csv("./SimilarityMatrixes/"+similarity_matrix_name)
-    setup = ImpostorGenuineSetup(matrix)
+    setup = ImpostorGenuineSetup(matrix, impostor_genuine_probability)
     number_impostors = setup["impostors"]
     number_genuine = setup["genuine"]
     t = 0.0
@@ -51,13 +61,19 @@ def main():
 
     parser.add_argument("--similarity_matrix_name", type=str, required=True)
     parser.add_argument("--output_file_name", type=str, required=True)
+    parser.add_argument("--impostor_genuine_probability", type=str, required=True)
 
     args = parser.parse_args()
 
     similarity_matrix_name = args.similarity_matrix_name
     output_file_name = args.output_file_name
 
-    benchmark(similarity_matrix_name, output_file_name)
+    impostor_genuine_probability = args.impostor_genuine_probability
+    if impostor_genuine_probability not in ["50-50", "70-30", "30-70"]:
+        raise Exception("The given values for the impostor genuine probabilityi is not valid")
+
+
+    benchmark(similarity_matrix_name, output_file_name, impostor_genuine_probability)
 
 if __name__ == "__main__":
     main()
