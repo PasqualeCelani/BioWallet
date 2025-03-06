@@ -9,17 +9,9 @@ def ImpostorGenuineSetup(matrix, impostor_genuine_probability):
     number_genuine = 0
     claims = []
 
-    propability = None
-    if impostor_genuine_probability == "50-50":
-        propability = [0.5, 0.5]
-    elif impostor_genuine_probability == "70-30":
-        propability = [0.7, 0.3]
-    else:
-        propability = [0.3, 0.7]
-
     for i in range(1, len(matrix)):
         identity = matrix[i][0].split("_")[0]
-        impostor = choices([True, False], propability)[0]
+        impostor = choices([True, False], impostor_genuine_probability)[0]
         claim = identity
         if impostor:
             identities = {matrix[0][i].split("_")[0] for i in range(1, len(matrix[0])) if matrix[0][i].split("_")[0] != identity}
@@ -61,17 +53,19 @@ def main():
 
     parser.add_argument("--similarity_matrix_name", type=str, required=True)
     parser.add_argument("--output_file_name", type=str, required=True)
-    parser.add_argument("--impostor_genuine_probability", type=str, required=True)
+    parser.add_argument("--impostor_probability", type=float, required=True)
+    parser.add_argument("--genuine_probability", type=float, required=True)
 
     args = parser.parse_args()
 
     similarity_matrix_name = args.similarity_matrix_name
     output_file_name = args.output_file_name
 
-    impostor_genuine_probability = args.impostor_genuine_probability
-    if impostor_genuine_probability not in ["50-50", "70-30", "30-70"]:
-        raise Exception("The given values for the impostor genuine probabilityi is not valid")
-
+    impostor_probability = args.impostor_genuine_probability
+    genuine_probability = args.genuine_probability
+    if (impostor_probability < 0 and impostor_probability > 1) or (genuine_probability < 0 or genuine_probability > 1):
+        raise Exception("The required value is a probability so it must be within the [0,1] range") 
+    impostor_genuine_probability = [impostor_probability, genuine_probability]
 
     benchmark(similarity_matrix_name, output_file_name, impostor_genuine_probability)
 
