@@ -44,7 +44,17 @@ def benchmark(similarity_matrix_name, result_name, impostor_genuine_probability)
                 fa+=1
             if t > max_similarity and not impostor:
                 fr+=1
-        result.append([t, fa/number_impostors, fr/number_genuine])
+        FAR = None
+        FRR = None
+        if number_impostors != 0:
+            FAR = fa/number_impostors
+        else:
+            FAR = 0
+        if number_genuine != 0:
+            FRR = fr/number_genuine
+        else:
+            FRR = 0
+        result.append([t, FAR, FRR])
         t  = round(t+0.005,3)
     utils.save_to_csv("./BenchmarkResult/"+result_name, result)
 
@@ -61,7 +71,7 @@ def main():
     similarity_matrix_name = args.similarity_matrix_name
     output_file_name = args.output_file_name
 
-    impostor_probability = args.impostor_genuine_probability
+    impostor_probability = args.impostor_probability
     genuine_probability = args.genuine_probability
     if (impostor_probability < 0 and impostor_probability > 1) or (genuine_probability < 0 or genuine_probability > 1):
         raise Exception("The required value is a probability so it must be within the [0,1] range") 
