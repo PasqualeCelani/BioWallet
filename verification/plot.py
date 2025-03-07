@@ -12,7 +12,7 @@ def plot_FRR_FAR(name):
     plt.plot(x,y2,label="FRR")
     plt.title("Plot of FAR and FRR")
     plt.xlabel("Threshold")
-    plt.ylabel("values")
+    plt.ylabel("Error rate")
     plt.legend()
     plt.show()
 
