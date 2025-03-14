@@ -15,7 +15,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
     poetry install
 
 ENV PATH="/root/.local/bin:$PATH"
-EXPOSE 5000
+EXPOSE 4333
 
 
-CMD ["sh", "-c", "cd src/flask_docker && poetry run flask run --host=0.0.0.0 --debug --port=5000"]
+CMD ["sh", "-c", "cd src/flask_docker && poetry run flask run --host=0.0.0.0 --debug --port=4333"]
