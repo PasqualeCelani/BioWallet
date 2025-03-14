@@ -198,3 +198,5 @@ cython_debug/
 /app/frontend/yarn-debug.log*
 /app/frontend/yarn-error.log*
 
+/app/backend/poetry.lock
+
