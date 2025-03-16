@@ -199,4 +199,3 @@ cython_debug/
 /app/frontend/yarn-error.log*
 
 /app/backend/poetry.lock
-
