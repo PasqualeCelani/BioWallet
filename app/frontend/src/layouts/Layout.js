@@ -4,7 +4,7 @@ const Layout =({children}) =>{
     return(
        <html lang="en">
         <head></head>
-        <body>
+        <body className="bg-black">
             {children}
         </body>
        </html>
