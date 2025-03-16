@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const Layout =({children}) =>{
     return(
        <html lang="en">
         <head></head>
-        <body className="bg-black">
+        <body>
+            <Header />
             {children}
         </body>
        </html>
