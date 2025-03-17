@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VerificationSearch from '../components/VerificationSearch';
+import EnrollmentForm from '../components/EnrollmentForm';
 
 
 const Homepage =({}) =>{
@@ -26,7 +27,7 @@ const Homepage =({}) =>{
         </div>
         <div className="container mx-auto pt-[96px]">
           { 
-            state ===  STATES.VERIFICATION ? <VerificationSearch /> : <div></div>
+            state ===  STATES.VERIFICATION ? <VerificationSearch /> : <EnrollmentForm />
           }
         </div>
         </>
