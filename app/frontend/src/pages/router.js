@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Homepage from './Homepage';
 import CameraPage from './CameraPage';
+import App from '../App';
 
 const router = createBrowserRouter([
-  { path: '/', element:  <Homepage/>},
+  { path: '/', element:  <App/>},
   { path: '/camera', element: <CameraPage />},
 ]);
 
