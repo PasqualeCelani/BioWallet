@@ -4,9 +4,14 @@ authors = [
     {name = "Pasquale Celani",email = "pasqualecelani01@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<4.0"
 dependencies = [
-    "Flask (==3.1.0)"
+    "Flask (==3.1.0)",
+    "flask-cors (==5.0.1)",
+    "deepface (==0.0.93)",
+    "tensorflow (==2.16.1)",
+    "tf-keras (==2.16)",
+    "pymongo (==4.11.3)" 
 ]
 
 [tool.poetry]

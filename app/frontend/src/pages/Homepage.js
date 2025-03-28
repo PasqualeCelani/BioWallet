@@ -1,33 +1,39 @@
-import { useState } from 'react';
 import VerificationSearch from '../components/VerificationSearch';
 import EnrollmentForm from '../components/EnrollmentForm';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const Homepage =({}) =>{
+    const activeButtonState = "w-[147px] h-[41px] bg-[#FFE4C6] border border-[#FF8400] rounded-[5px] \
+    transition-all transform hover:scale-95 active:scale-90 hover:opacity-75";
+    const notActiveButtonState = "w-[147px] h-[41px] bg-[#FFFFFF] border border-[#FF8400] rounded-[5px] \
+    transition-all transform hover:scale-95 active:scale-90 hover:opacity-75";
 
-    const STATES = {
-        VERIFICATION : "VERIFICATION",
-        ENROLLMENT : "ENROLLMENT"
-    };
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const activeButtonState = "w-[147px] h-[41px] bg-[#FFE4C6] border border-[#FF8400] rounded-[5px]";
-    const notActiveButtonState = "w-[147px] h-[41px] bg-[#FFFFFF] border border-[#FF8400] rounded-[5px]";
-
-    const [state, setState] = useState(STATES.VERIFICATION);
+    useEffect(() => {
+        if (!searchParams.get('state')) {
+          setSearchParams({ state: 'VERIFICATION' });
+        }
+        if(searchParams.get('state') != 'VERIFICATION' && searchParams.get('state') != 'ENROLLMENT') {
+            setSearchParams({ state: 'VERIFICATION' });
+        }
+      }, [searchParams, setSearchParams]);
 
     return(
         <>
         <div className="w-full h-[83px] bg-[#FFF2E4] flex justify-center items-center">
             <div className="flex flex-row gap-6">
-                <button className={state === STATES.VERIFICATION ? activeButtonState : notActiveButtonState} 
-                onClick={() => setState(STATES.VERIFICATION)}>Verification</button>
-                <button className={state === STATES.ENROLLMENT ? activeButtonState : notActiveButtonState}
-                onClick={() => setState(STATES.ENROLLMENT)}>Enrollment</button>
+                <button className={searchParams.get('state') === "VERIFICATION" ? activeButtonState : notActiveButtonState} 
+                onClick={() => setSearchParams({ state: 'VERIFICATION' })}>Verification</button>
+                <button className={searchParams.get('state') === "ENROLLMENT" ? activeButtonState : notActiveButtonState}
+                onClick={() => setSearchParams({ state: 'ENROLLMENT' })}>Enrollment</button>
             </div>
         </div>
         <div className="container mx-auto pt-[96px]">
           { 
-            state ===  STATES.VERIFICATION ? <VerificationSearch /> : <EnrollmentForm />
+            searchParams.get('state') === "VERIFICATION" ? <VerificationSearch /> : <EnrollmentForm />
           }
         </div>
         </>
