@@ -1,11 +1,9 @@
 import argparse
 import os
 import utils
+import recognition
 from random import randrange
 
-import sys
-sys.path.append('../') 
-from src.bio_wallet import recognition
 
 def create_similarity_matrix(dataset_path, model, detector, name_file):
     similarity_metrix = [

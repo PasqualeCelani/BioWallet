@@ -1,20 +1,23 @@
 [project]
-name = "BioWallet"
+name = "flask_docker"
 authors = [
     {name = "Pasquale Celani",email = "pasqualecelani01@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<4.0"
 dependencies = [
+    "Flask (==3.1.0)",
+    "flask-cors (==5.0.1)",
     "deepface (==0.0.93)",
     "tensorflow (==2.16.1)",
     "tf-keras (==2.16)",
-    "dlib (==19.24.6)",
-    "matplotlib (==3.10.1)",
-    "PyQt6 (==6.8.1)" 
+    "pymongo (==4.11.3)",
+    "ecdsa (==0.19.1)",
+    "PyJWT (==2.10.1)" 
 ]
 
 [tool.poetry]
+packages = [{include = "flask_docker", from = "src"}]
 package-mode = false
 
 

@@ -1,0 +1,35 @@
+# Byte-compiled files and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv
+.env
+
+# Logs
+*.log
+logs/
+
+# Test and coverage reports
+htmlcov/
+.coverage
+*.cover
+coverage.xml
+
+# IDE and editor files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Docker-related files
+.dockerignore
+
+# Poetry-specific files
+poetry.lock
