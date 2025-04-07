@@ -88,7 +88,7 @@ const EnrollmentForm = ({}) => {
                     disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed" 
                     onClick={() => submit()} disabled={context.getNumberOfImages() == 0 || context._getId() === ''}>
                         SUMBMIT
-                    </button> : <Spinner/>
+                    </button> : <Spinner additional_style={"top-[83%] left-[73%] relative"}/>
                     }   
                 </div>
             </div>

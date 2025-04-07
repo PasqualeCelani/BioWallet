@@ -4,6 +4,7 @@ import success_img from '../assets/SuccessIcon.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import error_triangle from '../assets/ErrorTriangle.png';
 
 const VerificationSearch = ({}) => {
 
@@ -32,6 +33,18 @@ const VerificationSearch = ({}) => {
                 <p className='font-inter font-bold text-[12px] leading-[15px] text-[#0A7527]'>ENROLLMENT SUCCESSES</p>
               </div>
             </div> : <div></div>
+            }
+            {
+              searchParams.get("error") != null ? 
+              <div className='box-border w-[500px] h-[100px] bg-white border border-[#B50000] rounded-md mt-5'>
+                <div className='flex flex-col gap-2 mx-2 my-2'> 
+                <div className='flex flex-row items-center gap-2'>
+                <img src={error_triangle}/>
+                <p className='font-inter font-normal text-[12px] leading-[15px] text-[#B50000]'>ERROR</p>
+                </div>
+                  <p className='font-inter font-normal text-[12px] leading-[15px] text-[#B50000] pl-1'>{searchParams.get('error')}</p>
+                </div>
+              </div> : <div></div>
             }
         </div>
     );

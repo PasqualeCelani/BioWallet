@@ -40,5 +40,15 @@ def images_quality(imgs):
     for i in range(len(score)):
         result.append([score[i][0], faces[i][1]])
     return result
-        
+
+def get_simmilarity(embedding1, embedding2):
+    similarity = np.dot(
+            np.array(embedding1), 
+            np.array(embedding2)
+        )/(np.linalg.norm(np.array(embedding1))*np.linalg.norm(np.array(embedding2))
+    )
+    minx = -1 
+    maxx = 1
+    normalize_similarity = (similarity-minx)/(maxx-minx)
+    return normalize_similarity     
     
