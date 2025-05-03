@@ -18,14 +18,22 @@ BioWallet is a **proof-of-concept** desktop application implementing a key relea
 
 ## :gear: Build&Run
 ### Prerequisites
-Having Docker and Docker Compose installed.
-### Steps
+Having Docker and Docker Compose installed. Moreover, ensure that the FaceQnet model is properly loaded in the backend, as demonstrated in the "Experimental Validation" section under Key Features. The model is not included in the repository, so while the application will still build without it, an error will occur during enrollment or verification if the model is missing. The following steps are intended for running the actual application. If you need to execute the verification scripts or plot experimental results from the CSV files, you'll also need to have Python installed on your machine (e.g., Python 3.12) along with a compatible version of Poetry.
+### Steps for the application
 
 1. Clone the repository: ```git clone https://github.com/PasqualeCelani/BioWallet.git```
 2. Go to the application directory: ```cd BioWallet/app```
 3. Start the application: ```docker compose up --build --force-recreate```
 4. Open the application:  Open the following URL in your favorite browser ```http://localhost:3000```
 
+### Steps for the verification
+
+1. Clone the repository: ```git clone https://github.com/PasqualeCelani/BioWallet.git```
+2. Go to the repository directory: ```cd BioWallet```
+3. Create the lock file: ```poetry lock```
+4. Install the dependencies: ```poetry install```
+5. Go to the verification directory: ```cd verification```
+6. Choose a script to run, for instance: ```poetry run python plot.py --type=FRR-FAR --benchmark_file=./BenchmarkResults/benchmark_50-50_Facenet512_retinaface_Aligned_MyDataset```
 
 ## :warning: Limitations
 While BioWallet demonstrates the feasibility of using facial biometrics for secure cryptographic key management, it currently remains a prototype and has several limitations that should be addressed in future development:
